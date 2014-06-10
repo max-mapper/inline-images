@@ -1,0 +1,22 @@
+{
+  "name": "inline-images",
+  "version": "1.0.0",
+  "main": "index.js",
+  "bin": {
+    "inline-images": "cli.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "max ogden",
+  "license": "BSD",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maxogden/inline-images.git"
+  },
+  "bugs": {
+    "url": "https://github.com/maxogden/inline-images/issues"
+  },
+  "homepage": "https://github.com/maxogden/inline-images",
+  "description": "transforms html and replaces <img> tags with inline data uri driven images"
+}

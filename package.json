@@ -1,12 +1,15 @@
 {
   "name": "inline-images",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
   "bin": {
     "inline-images": "cli.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "cheerio": "cheeriojs/cheerio"
   },
   "author": "max ogden",
   "license": "BSD",

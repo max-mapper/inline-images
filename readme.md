@@ -1,7 +1,9 @@
 # inline-images
 
-transforms html and replaces img tags with data URIs, e.g.`<img src="foo.png">` tags with `<img src="data:">`
+#### Description
+Takes the `<img src="foo.jpg">` and inlines the image as base64 > `<img src="data:......">`
 
+#### CLI
 ```
 npm install inline-images -g
 inline-images index.html > inlined.html

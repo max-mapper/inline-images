@@ -37,6 +37,9 @@ module.exports = function(html, base) {
   }
   
   function isLocal(href) {
-    return href && !url.parse(href).hostname;
+    // Turn on "slashesDenoteHost" option to recognize "//domain.tld" as a remote host
+    //
+    //   See: https://nodejs.org/api/url.html#url_url_parse_urlstring_parsequerystring_slashesdenotehost
+    return href && !url.parse(href, false, true).hostname;
   }
 }

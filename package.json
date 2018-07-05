@@ -9,7 +9,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "cheerio": "cheeriojs/cheerio"
+    "cheerio": "1.0.0-rc.2",
+    "commander": "^2.16.0"
   },
   "author": "max ogden",
   "license": "BSD",

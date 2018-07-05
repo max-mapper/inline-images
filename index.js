@@ -15,7 +15,7 @@ var contentTypes = {
 module.exports = function(html, base) {
   base = base || process.cwd()
   
-  var dom = cheerio.load(String(html))
+  var dom = cheerio.load(String(html), {decodeEntities: false})
   inlineImages(dom)
   
   return new Buffer(dom.html({decodeEntities: false}))

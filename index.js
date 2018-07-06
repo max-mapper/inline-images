@@ -9,7 +9,19 @@ const contentTypes = {
   ".jpg": "image/jpeg",
   ".jpeg": "image/jpeg",
   ".bmp": "image/bmp",
-  ".webp": "image/webp"
+  ".webp": "image/webp",
+  ".svg": "image/svg+xml"
+};
+
+const escape = {
+  '%': '%25',
+  '"': '\'',
+  '&': '%26',
+  '#': '%23',
+  '{': '%7b',
+  '}': '%7d',
+  '<': '%3c',
+  '>': '%3e'
 };
 
 module.exports.file = function (file, options) {
@@ -64,9 +76,7 @@ function inlineImages(htmlFile, options) {
         console.error("skip img '%s' because of file type unsupported", src);
         return;
       }
-      const img = fs.readFileSync(imgPath);
-      const dataUri = "data:" + contentType + ";base64," + img.toString("base64");
-      element.attr('src', dataUri);
+      element.attr('src', convertToDataUrl(contentType, imgPath));
       if (options.class && options.removeClass) {
         const classes = element.attr('class').split(/\s+/);
         if (classes.length === 1)
@@ -77,6 +87,19 @@ function inlineImages(htmlFile, options) {
     }
   });
   return dom.html({decodeEntities: false});
+}
+
+function convertToDataUrl(contentType, imgPath) {
+  let content = fs.readFileSync(imgPath);
+  if (contentType === contentTypes[".svg"]) {
+    const reg = new RegExp(Object.keys(escape).join('|'), 'gi');
+    content = content.toString()
+        .replace(reg, matched => escape[matched])
+        .replace(/\s+/g, ' ');
+    return "data:image/svg+xml;charset=utf8," + content;
+  } else {
+    return "data:" + contentType + ";base64," + content.toString("base64");
+  }
 }
 
 function createSelector(className) {

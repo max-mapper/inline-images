@@ -8,18 +8,19 @@ var contentTypes = {
   ".gif": "image/gif",
   ".jpg": "image/jpeg",
   ".jpeg": "image/jpeg",
+  ".svg": "image/svg+xml",
   ".bmp": "image/bmp",
   ".webp": "image/webp"
 }
 
 module.exports = function(html, base) {
   base = base || process.cwd()
-  
+
   var dom = cheerio.load(String(html))
   inlineImages(dom)
-  
+
   return new Buffer(dom.html({decodeEntities: false}))
-  
+
   function inlineImages(dom) {
     var styles = [];
     dom('img').each(function(idx, el) {
@@ -35,7 +36,7 @@ module.exports = function(html, base) {
       }
     })
   }
-  
+
   function isLocal(href) {
     return href && !url.parse(href).hostname;
   }

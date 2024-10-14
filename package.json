@@ -8,9 +8,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {
-    "cheerio": "cheeriojs/cheerio"
-  },
   "author": "max ogden",
   "license": "BSD",
   "repository": {
@@ -21,5 +18,8 @@
     "url": "https://github.com/maxogden/inline-images/issues"
   },
   "homepage": "https://github.com/maxogden/inline-images",
-  "description": "transforms html and replaces <img> tags with inline data uri driven images"
+  "description": "transforms html and replaces <img> tags with inline data uri driven images",
+  "dependencies": {
+    "cheerio": "^1.0.0"
+  }
 }

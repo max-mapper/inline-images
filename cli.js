@@ -1,9 +1,14 @@
 #!/usr/bin/env node
 
-var fs = require('fs')
-var inliner = require('./')
+var fs = require("fs");
+var inliner = require("./");
+var remoteInliner = require("./replace");
 
-var html = fs.readFileSync(process.argv[2])
+var html = fs.readFileSync(process.argv[2]).toString();
 
-var inlined = inliner(html)
-console.log(inlined.toString())
+var run = async function () {
+  var inlined = await remoteInliner(html, process.argv[3]);
+  console.log(inlined);
+};
+
+run();
